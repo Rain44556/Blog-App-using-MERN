@@ -6,7 +6,11 @@ import Blogs from './components/Blogs';
 import UserBlogs from './components/UserBlogs';
 import AddBlogs from './components/AddBlogs';
 import DetailsBlog from './components/DetailsBlog';
+import { useSelector } from 'react-redux';
 function App() {
+const isAccessible = useSelector(state => state.isAccessible);
+console.log(isAccessible);
+
   return (
     <React.Fragment>
 
