@@ -31,10 +31,16 @@ const Header = () => {
            </Box>}
 
            <Box display="flex" marginLeft="auto">
-            {!isAccessible && <> <Button LinkComponent={Link} to="/auth" sx={{margin: 1, borderRadius: 1, backgroundColor: brown[300]}} variant='contained' >Login</Button>
-            <Button LinkComponent={Link} to="/auth" sx={{margin: 1,  borderRadius: 1, backgroundColor: brown[400]}} variant='contained'>Signup</Button></>}
+            {!isAccessible && <> <Button LinkComponent={Link} to="/auth" 
+                                         sx={{margin: 1, borderRadius: 1, backgroundColor: brown[300]}} 
+                                         variant='contained' >Login</Button>
+            <Button LinkComponent={Link} to="/auth" 
+                    sx={{margin: 1,  borderRadius: 1, backgroundColor: brown[400]}} 
+                    variant='contained'>Signup</Button></>}
 
-            {isAccessible && <Button LinkComponent={Link} to="/auth" sx={{margin: 1,  borderRadius: 1, backgroundColor: brown[300]}} variant='contained'>Logout</Button>}
+            {isAccessible && <Button LinkComponent={Link} to="/auth" 
+                                     sx={{margin: 1,  borderRadius: 1, backgroundColor: brown[300]}} 
+                                     variant='contained'>Logout</Button>}
            </Box>
 
         </Toolbar>
