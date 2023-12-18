@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import {grey} from '@mui/material/colors'
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { actionsAuth } from '../store';
+import { useNavigate } from 'react-router-dom';
 
 
 const Auth = () => {
+const dispath = useDispatch();
+const navigate = useNavigate();
 const [isSignup, setIsSignup] = useState(false);
 const [fields, setFields] = useState({
     name:"", email:"", password:"",
@@ -14,10 +20,32 @@ const handleChange = (e) =>{
         [e.target.name] : e.target.value
     }));
 };
+const requestSend = async (type = "login") =>{
+    const res = await axios.post(`http://localhost:5000/api/user/${type}`,{
+    name: fields.name,    
+    email: fields.email,
+    password: fields.password
+    }).catch(err => console.log(err));
+
+    const data = await res.data;
+    return data;
+}
 const handleSubmit = (e) => {
     e.preventDefault();
     console.log(fields);
-}
+    if(isSignup){
+        requestSend("signup")
+        .then(()=>dispath(actionsAuth.login()))
+        .then(()=> navigate("/blogs"))
+        .then((data)=>console.log(data));
+    } else{
+        requestSend()
+        .then(()=>dispath(actionsAuth.login()))
+        .then(()=> navigate("/blogs"))
+        .then((data)=>console.log(data));
+    }
+};
+
 
     return (
         <div>

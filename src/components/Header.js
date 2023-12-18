@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import {AppBar, Toolbar, Box, Button, styled, Typography, Tabs, Tab} from '@mui/material';
 import {brown} from '@mui/material/colors'
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionsAuth } from '../store';
 
 const Img = styled('img')({
     width: 100,
@@ -15,6 +16,7 @@ const Header = () => {
     const imgUrl = "https://img.freepik.com/free-photo/toy-bricks-table_144627-48267.jpg?w=996&t=st=1702643534~exp=1702644134~hmac=2a2e3b23c88fb8b7f3cad85865c88950544b4bfd99a4c5fdfdf1d31794c41525";
     const [value, setValue] = useState();
     const isAccessible = useSelector((state => state.isAccessible)); 
+    const dispath = useDispatch();
 
     return (
 
@@ -33,14 +35,18 @@ const Header = () => {
            <Box display="flex" marginLeft="auto">
             {!isAccessible && <> <Button LinkComponent={Link} to="/auth" 
                                          sx={{margin: 1, borderRadius: 1, backgroundColor: brown[300]}} 
-                                         variant='contained' >Login</Button>
+                                         variant='contained' >
+                                         Login</Button>
             <Button LinkComponent={Link} to="/auth" 
                     sx={{margin: 1,  borderRadius: 1, backgroundColor: brown[400]}} 
-                    variant='contained'>Signup</Button></>}
+                    variant='contained'>
+                    Signup</Button></>}
 
-            {isAccessible && <Button LinkComponent={Link} to="/auth" 
-                                     sx={{margin: 1,  borderRadius: 1, backgroundColor: brown[300]}} 
-                                     variant='contained'>Logout</Button>}
+            {isAccessible && (<Button
+                LinkComponent={Link} to="/auth" 
+                sx={{margin: 1,  borderRadius: 1, backgroundColor: brown[300]}} 
+                variant='contained' onClick={()=>dispath(actionsAuth.logout())}>
+                Logout</Button>)}
            </Box>
 
         </Toolbar>
