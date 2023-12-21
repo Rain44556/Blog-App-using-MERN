@@ -13,6 +13,7 @@ const Blogs = () => {
         requestSend().then(data => setBlogs(data.blogs));
     }, []);
     console.log(blogs); 
+    
     return (
         <div>
             {blogs && blogs.map(( blog, index)=>(

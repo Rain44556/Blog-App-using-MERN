@@ -28,21 +28,22 @@ const requestSend = async (type = "login") =>{
     }).catch(err => console.log(err));
 
     const data = await res.data;
+    console.log(data);
     return data;
-}
+};
 const handleSubmit = (e) => {
     e.preventDefault();
     console.log(fields);
     if(isSignup){
         requestSend("signup")
+        .then((data)=>localStorage.setItem("userId", data.user._id))
         .then(()=>dispath(actionsAuth.login()))
-        .then(()=> navigate("/blogs"))
-        .then((data)=>console.log(data));
+        .then(()=> navigate("/blogs"));
     } else{
         requestSend()
+        .then((data)=>localStorage.setItem("userId", data.user._id))
         .then(()=>dispath(actionsAuth.login()))
-        .then(()=> navigate("/blogs"))
-        .then((data)=>console.log(data));
+        .then(()=> navigate("/blogs"));
     }
 };
 
