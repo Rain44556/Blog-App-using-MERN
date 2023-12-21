@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box,Typography,InputLabel,TextField, Button } from '@mui/material';
-import { blue } from '@mui/material/colors';
+import axios from 'axios';
 
 const inputStyles = {fontWeight:'bold', 
                      mt:1, 
@@ -17,10 +17,23 @@ const AddBlogs = () => {
                 [e.target.name]: e.target.value,
                 }));
     }
+
+    const requestSend = async()=> {
+    const res = await axios.post("http://localhost:5000/api/blog/add",
+    {   title: fields.headline,
+        description: fields.overview,
+        image: fields.photoURL,
+        user: localStorage.getItem("userId")
+    }).catch(err=> console.log(err));
+    const data = await res.data;
+    return data;
+    };
+
     const handleSubmit = (e)=>{
             e.preventDefault();
             console.log(fields);
-    }
+            requestSend().then(data=> console.log(data));
+    };
 
     return (
         <div>
