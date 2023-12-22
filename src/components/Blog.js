@@ -9,14 +9,14 @@ const Blog = ({title,description,imgUrl, userName}) => {
         boxShadow: "12px 12px 20px grey"}, }}>
 
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {userName}
+        avatar={ 
+          <Avatar sx={{ bgcolor: red[500] }} aria-label="blog">
+            {userName ? userName.charAt(0) : ""}
           </Avatar>
         }
         
         title={title}
-        subheader="September 14, 2016"
+        subheader="September 14, 2023"
       />
       <CardMedia
         component="img"
@@ -27,7 +27,7 @@ const Blog = ({title,description,imgUrl, userName}) => {
 
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-            {description}       
+          <b>{userName}</b> {":"} {description}       
         </Typography>
       </CardContent>
     </Card>

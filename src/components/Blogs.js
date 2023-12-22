@@ -19,7 +19,7 @@ const Blogs = () => {
             {blogs && blogs.map(( blog, index)=>(
                 <Blog title={blog.title}
                       description={blog.description}
-                      imgUrl={blog.imgUrl} 
+                      imgUrl={blog.image} 
                       userName={blog.user.name}>
 
                       </Blog>
