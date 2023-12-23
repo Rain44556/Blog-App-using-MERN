@@ -24,6 +24,7 @@ const UserBlogs = () => {
            {user && user.blogs && user.blogs.map(( blog, index)=>(
                 <Blog
                 key={index}
+                isUser={true}
                 title={blog.title}
                 description={blog.description}
                 imgUrl={blog.image} 
