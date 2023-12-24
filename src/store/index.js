@@ -8,6 +8,7 @@ const sliceAuth = createSlice({
             state.isAccessible = true
         },
         logout(state){
+            localStorage.removeItem("userId");
             state.isAccessible = false
         },
     },

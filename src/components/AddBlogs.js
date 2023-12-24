@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box,Typography,InputLabel,TextField, Button } from '@mui/material';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const inputStyles = {fontWeight:'bold', 
                      mt:1, 
@@ -8,6 +9,7 @@ const inputStyles = {fontWeight:'bold',
                      fontSize:"20px"}
 
 const AddBlogs = () => {
+    const navigate = useNavigate();
     const [fields, setFields] = useState({
         headline:"", overview:"", photoURL:"",
     });
@@ -32,7 +34,9 @@ const AddBlogs = () => {
     const handleSubmit = (e)=>{
             e.preventDefault();
             console.log(fields);
-            requestSend().then(data=> console.log(data));
+            requestSend()
+            .then(data=> console.log(data))
+            .then(()=> navigate("/blogs"));
     };
 
     return (
