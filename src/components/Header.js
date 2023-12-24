@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {AppBar, Toolbar, Box, Button, styled, Typography, Tabs, Tab} from '@mui/material';
-import {brown} from '@mui/material/colors'
+import {brown, green, grey, lightGreen} from '@mui/material/colors'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionsAuth } from '../store';
@@ -8,12 +8,12 @@ import { actionsAuth } from '../store';
 const Img = styled('img')({
     width: 100,
    padding: 5,
-   borderRadius: 29, 
+   borderRadius: 50,
 });
 
 
 const Header = () => {
-    const imgUrl = "https://img.freepik.com/free-photo/toy-bricks-table_144627-48267.jpg?w=996&t=st=1702643534~exp=1702644134~hmac=2a2e3b23c88fb8b7f3cad85865c88950544b4bfd99a4c5fdfdf1d31794c41525";
+    const imgUrl = "https://img.freepik.com/free-vector/green-buttefly-with-bokeh-background_1035-326.jpg?w=740&t=st=1703431298~exp=1703431898~hmac=5adc0b8f16ddaa202c9920794eca1948d9be90c1ae67700de78651a238cbb95a";
     const [value, setValue] = useState();
     const isAccessible = useSelector((state => state.isAccessible)); 
     const dispath = useDispatch();
@@ -23,10 +23,16 @@ const Header = () => {
         <AppBar position="sticky" sx={{backgroundColor: "black"}}>
         <Toolbar>
                 <Img src ={imgUrl} alt = "blog"/>
-                <Typography variant='h6'>ApP</Typography>
+                <Typography sx={{fontFamily: "fantasy", 
+                            color: "greenyellow"}} 
+                            variant='h6'>BloG ApP</Typography>
 
-          {isAccessible && <Box display="flex" marginLeft="auto" marginRight="auto">
-            <Tabs textColor= {"inherit"} value={value} onChange={(e,val) => setValue(val)}>
+          {isAccessible && <Box display="flex" 
+                                marginLeft="auto" 
+                                marginRight="auto">
+            <Tabs textColor= {"inherit"} 
+                  value={value} 
+                  onChange={(e,val) => setValue(val)}>
                 <Tab LinkComponent={Link} to="/blogs" label = "Each Blogs"></Tab>
                 <Tab LinkComponent={Link} to="/myBlogs" label = "My Blogs"></Tab>
                 <Tab LinkComponent={Link} to="/blogs/add" label = "Add Blogs"></Tab>
@@ -35,18 +41,35 @@ const Header = () => {
 
            <Box display="flex" marginLeft="auto">
             {!isAccessible && <> <Button LinkComponent={Link} to="/auth" 
-                                         sx={{margin: 1, borderRadius: 1, backgroundColor: brown[300]}} 
-                                         variant='contained' >
+                                         sx={{margin: 1, 
+                                            borderRadius: 1, 
+                                            backgroundColor: lightGreen[700], 
+                                            color: grey[300], 
+                                            fontStyle: "italic", 
+                                            fontWeight: 900}} 
+                                         variant='contained'>
                                          Login</Button>
+
             <Button LinkComponent={Link} to="/auth" 
-                    sx={{margin: 1,  borderRadius: 1, backgroundColor: brown[400]}} 
-                    variant='contained'>
-                    Signup</Button></>}
+                    sx={{margin: 1,  
+                        borderRadius: 1, 
+                        backgroundColor: lightGreen[700], 
+                        color: grey[300], 
+                        fontStyle: "italic", 
+                        fontWeight: 900}}
+                        variant='contained'>
+                        Signup</Button></>}
 
             {isAccessible && (<Button
                 LinkComponent={Link} to="/auth" 
-                sx={{margin: 1,  borderRadius: 1, backgroundColor: brown[300]}} 
-                variant='contained' onClick={()=>dispath(actionsAuth.logout())}>
+                sx={{margin: 1,  
+                    borderRadius: 1, 
+                    backgroundColor: lightGreen[700], 
+                    color: grey[300], 
+                    fontStyle: "italic", 
+                    fontWeight: 900}}
+                    variant='contained' 
+                    onClick={()=>dispath(actionsAuth.logout())}>
                 Logout</Button>)}
            </Box>
 

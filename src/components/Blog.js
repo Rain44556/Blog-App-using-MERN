@@ -26,8 +26,12 @@ const Blog = ({title,description,imgUrl, userName, isUser, id}) => {
   return (
     <div>
       {" "}
-    <Card sx={{ width: "50%", boxShadow: "7px 7px 14px grey", padding: 3, margin: "auto", marginTop: 3, ":hover":{
-        boxShadow: "12px 12px 20px grey"}, }}>
+    <Card sx={{ width: "50%", 
+                boxShadow: "7px 7px 14px grey", 
+                padding: 3, 
+                margin: "auto", 
+                marginTop: 3, 
+                ":hover":{boxShadow: "12px 12px 20px grey"}, }}>
       
       {isUser && (
         <Box display="flex">
