@@ -1,4 +1,5 @@
 import { Box, Button, InputLabel, TextField, Typography } from '@mui/material';
+import { grey } from '@mui/material/colors';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -68,24 +69,25 @@ const DetailsBlog = () => {
         display={"flex"} 
         flexDirection={"column"} 
         border={5} 
-        borderColor={"rgb(123, 63, 0)"}
+        borderColor={"rgb(0,100,0)"}
         borderRadius={8}  
         padding={5} 
         margin={"auto"}
         marginTop={3}
-        boxShadow="9px 9px 18px rgb(123, 63, 0)" 
+        boxShadow="9px 9px 18px rgb(0,100,0)" 
         >
         <Typography variant='h4'
                         textAlign={"center"} 
                         fontWeight={"bold"} 
                         padding={2} 
-                        color={'rgb(123, 63, 0)'}>Share Your Blog
+                        color={'rgb(0,100,0)'}
+                        fontFamily={"revert-layer"}>Share Your Blog
         </Typography>
         <InputLabel sx={inputStyles}>Headline</InputLabel>
         <TextField margin='auto' variant='outlined' name={"headline"} value={fields.headline} onChange={handleChange}></TextField>
         <InputLabel sx={inputStyles}>An Overview</InputLabel>
         <TextField margin='auto' variant='outlined' name={"overview"} value={fields.overview} onChange={handleChange}></TextField>
-        <Button type="submit" variant='contained' sx={{borderRadius: 5, margin: "auto", mt:2, backgroundColor: 'rgb(123, 63, 0)', width: "60%"}}>Submit</Button>
+        <Button type="submit" variant='contained' sx={{borderRadius: 5, margin: "auto", mt:2, backgroundColor: 'rgb(0,100,0)', width: "60%", color: grey[300], fontSize: 16, fontWeight: 700}}>Submit</Button>
     </Box> 
     </form>
 )}
