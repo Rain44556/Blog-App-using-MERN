@@ -8,6 +8,7 @@ import AddBlogs from './components/AddBlogs';
 import DetailsBlog from './components/DetailsBlog';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionsAuth } from './store';
+import Body from './components/Body';
 
 
 function App() {
@@ -23,6 +24,8 @@ useEffect(()=>{
   return (
     <React.Fragment>
       <header><Header></Header></header>
+
+      <Body></Body>     
     <main>
       <Routes>
       { !isAccessible ? (<Route path ="/auth" element={<Auth></Auth>}></Route>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {AppBar, Toolbar, Box, Button, styled, Typography, Tabs, Tab} from '@mui/material';
-import {brown, green, grey, lightGreen} from '@mui/material/colors'
+import {grey, lightGreen} from '@mui/material/colors'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionsAuth } from '../store';
@@ -75,6 +75,7 @@ const Header = () => {
 
         </Toolbar>
         </AppBar>
+     
     );
 };
 
