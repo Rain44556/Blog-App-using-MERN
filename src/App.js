@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Auth from './components/Auth';
@@ -12,15 +12,23 @@ import Body from './components/Body';
 
 
 function App() {
+  const [message, setMessage] = useState("");
   const dispath =useDispatch();
-const isAccessible = useSelector(state => state.isAccessible);
-console.log(isAccessible);
+  const isAccessible = useSelector(state => state.isAccessible);
+  console.log(isAccessible);
 
 useEffect(()=>{
   if (localStorage.getItem("userId")){
     dispath(actionsAuth.login());
   }
 }, [dispath]);
+
+useEffect(() => {
+  fetch("https://mern-blog-tnsl.onrender.com")
+  .then((res) => res.json())
+  .then((data) => setMessage(data.message));
+})
+
   return (
     <React.Fragment>
       <header><Header></Header></header>
