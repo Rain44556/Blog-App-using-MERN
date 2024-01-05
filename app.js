@@ -5,8 +5,10 @@ import blogRouter from './routes/BlogRoutes.js';
 import cors from 'cors';
 
 
+const clientUrl = {origin:"https://mern-blog-livesite.onrender.com"}
+
 const app = express();
-app.use(cors());
+app.use(cors(clientUrl));
 app.use(express.json());
 app.use("/api/user", router);
 app.use("/api/blog", blogRouter);
